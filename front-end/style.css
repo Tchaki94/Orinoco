@@ -1,14 +1,15 @@
 body {
-    margin: 0;
+    margin: 0 0 0 0;
     padding:0;
     font-family: 'Caveat Brush', cursive;
     font-size: 20px;
+
 }
 
 nav {
     width: 100%;
     height: 80px;
-background-color: #FFF;
+    background-color: #FFF;
     display: flex;
 }
 ul {
@@ -59,11 +60,58 @@ h1 {
     margin-top: 250px; 
 }
 
-.boutique {
+
+.container{
+    height: 900px;
+    font-family: 'Coming Soon', cursive;
+    color: rgb(238, 238, 240);
+    font-size: 1.5em;
+    font-weight: bolder;
+    padding: 2%; 
+    border-style: solid;   
+    border-width: 2px;   
+    border-radius: 5px;
+    border-color:black;
+    margin-left: 1%;
+    margin-top: 30px;
+
+}
+label {
+    font-family: 'Caveat Brush', cursive;
+    color: black;
+}
+.form-group{
+    width: 20%;
+    margin:auto;
+}
+#produit{
+    margin: auto;
+    width: 50%;
+}
+article h3, p{
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(5, 5, 5);
+    margin: 5%;
+}
+#price::after{
+content: " €";
+}
+#articlePanier, #articleListe{
+    border-style: solid;
+    border-radius: 3px;
+    border-color: rgb(89, 84, 94);
+    margin: auto;
+    margin-bottom: 1%;
+    padding: 1%;
+    text-align: center;
+    width: 40%;
+}
+
+footer {
     width: 100%;
-    height: 1000px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 80px;
+    background-color: #f3e9f1;
+    margin-top: 30px;
 
 }
