@@ -1,48 +1,23 @@
 // obtention du produit dans l'url
 
-const { request } = require("express");
-
-let article = () => {
-    let request = newXMLHttpRequest();
-    request.onreadystatechange = function () {
-        if (this.readyState == 400 && this.status == 200) {
-            furniture = JSON.parse(this.responseText);
-            affichageProduit();
-        }
-    }
-}
-request.prependOnceListener("GET" "http://localhost:3000/api/furniture/" + _id);
-request.setEncoding();
-
-window.addEventListener('load', article);
-
-// affichage du produit
-
-function affichageProduit() {
-
-    var article = document.createElement('article');
-        var image = document.createElement('img');
-        image.src = furniture.imageUrl:
-        id = furniture_id;
-    var div = document.createElement('div');
-        var nom = document.createElement('h2');
-        nom.textContent = furniture.name;
-        nom.id = "furniture";
-
-        var prix = document.createElement('h3');
-        prix.textContent = 'Prix' ;
-        var price = document.createElement ('p');
-        price.textContent = furniture.price + '€';
-
-        var description = document.createElement('h3');
-        description.textContent = 'Description :';
-        var description2 = document.createElement('p');
-        description2.textContent = furniture.description;
-}
+fetch("http://localhost:3000/api/furniture")
+    .then(response => response.json())
+    .then(furnitures => {
+        console.log(furnitures)
+        let container = document.getElementById('furnitureContainer');
+        furnitures.forEach(furniture => {
+        let article = `<article class="furnitureContainer"><div class="difElt"><div class="eltname"><h2>${furniture.name}</h2></div><div class="eltimg"><img class="imgShop" src="${furniture.imageUrl}" alt="${furniture.name}" ></div><div class="eltdesc"><p>${furniture.description}</p></div><div class="eltprice"><p>${furniture.price + " €"}</p></div><div class="addtocart"><i class="fas fa-shopping-cart fa-3x"></i></div></div></article>`
+            container.innerHTML += article;
+        })
+    });
+/*  furnitures.forEach(furniture => {
+            let article = `<article><h2>${furniture.name}</h2><img class="imgShop" src="${furniture.imageUrl}" alt="${furniture.name}" ></article>`
+            container.innerHTML += article;
+        }) */
 
 // choix du vernis
 
-
+/*
 var label = document.createElement('label');
 label.textContent = "Vernis :";
 var vernis = document.createElement('select');
@@ -58,13 +33,4 @@ option.textContent = choix[i];
 option.id = "vernis";
 vernis.appendChild(option);
 
-// ajout dans le dom
-
-produit.appendChild(article);
-article.appendChild(nom);
-article.appendChild(image);
-article.appendChild(div);
-div.appendChild(desc);
-div.appendChild(description);
-div.appendChild(label);
-div.appendChild(vernis);
+*/

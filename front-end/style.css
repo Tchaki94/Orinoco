@@ -62,7 +62,7 @@ h1 {
 
 
 .container{
-    height: 900px;
+    height: 2600px;
     font-family: 'Coming Soon', cursive;
     color: rgb(238, 238, 240);
     font-size: 1.5em;
@@ -115,3 +115,59 @@ footer {
     margin-top: 30px;
 
 }
+
+/* Accueil */
+
+.vitrine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+    margin-top: 50px;
+}
+
+/* fin Accueil */
+/* produit */
+.imgShop {
+    width: 400px;
+}
+
+.imgShop:hover {
+    transform: scale(1.30);
+    transition: transform 330ms ease-in-out;
+}
+
+h2, p {
+    color: black;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 18px;
+}
+
+.difElt {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+    margin-top: 100px;
+}
+
+.eltname, .eltdesc, .eltprice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eltname {
+    width: 10%;
+}
+
+.eltprice>p {
+    color: rgb(160, 71, 243);
+}
+
+.addtocart {
+    width: 10%;
+    border: 2px black solid;
+}
+
+/* fin produiit*/
