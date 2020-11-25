@@ -6,14 +6,31 @@ fetch("http://localhost:3000/api/furniture")
         console.log(furnitures)
         let container = document.getElementById('furnitureContainer');
         furnitures.forEach(furniture => {
-        let article = `<article class="furnitureContainer"><div class="difElt"><div class="eltname"><h2>${furniture.name}</h2></div><div class="eltimg"><img class="imgShop" src="${furniture.imageUrl}" alt="${furniture.name}" ></div><div class="eltdesc"><p>${furniture.description}</p></div><div class="eltprice"><p>${furniture.price + " €"}</p></div><div class="addtocart"><i class="fas fa-shopping-cart fa-3x"></i></div></div></article>`
+        let article = `<article class="furnitureContainer"><div class="difElt"><div class="eltname"><h2>${furniture.name}</h2></div><div class="eltimg"><img class="imgShop" src="${furniture.imageUrl}" alt="${furniture.name}" ></div><div class="eltdesc"><p>${furniture.description}</p></div><div class="eltprice"><p>${furniture.price + " €"}</p></div><div class="addtocart"><a class="add-cart" href="#"><i class="fas fa-shopping-cart fa-1x"></i></a></div></div></article>`
             container.innerHTML += article;
         })
     });
-/*  furnitures.forEach(furniture => {
-            let article = `<article><h2>${furniture.name}</h2><img class="imgShop" src="${furniture.imageUrl}" alt="${furniture.name}" ></article>`
-            container.innerHTML += article;
-        }) */
+
+let carts = document.querySelectorAll('.add-cart');
+
+for (let i=0; i < carts.length; i++) {
+    carts[i].addEventListener('click', () => {
+        cartNumbers();
+    })
+}
+
+function cartNumbers() {
+    let productNumbers = localStorage.getItem('cartNumbers');
+    
+    productNumbers = parseInt(productNumbers);
+
+    if(productNumbers) {
+        localStorage.setItem('cartNumbers', productNumbers +1);
+    } else {
+        localStorage.setItem('cartNumbers', 1);
+    }
+    
+}
 
 // choix du vernis
 
