@@ -184,4 +184,66 @@ a {
     background-color: white;
 }
 
-/* fin produiit*/
+/* fin produit*/
+
+/* tableau panier */ 
+
+h3 {
+    color: black;
+    font-size: 18px;
+}
+
+.produits-container {
+    width: 100%;
+    height: 30px;
+    margin-top: 50px;
+}
+
+.produits-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.produit-titre {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid  rgb(160, 71, 243);
+}
+
+.prix {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid  rgb(160, 71, 243);
+}
+
+.vernis {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid  rgb(160, 71, 243);
+}
+
+.quantité {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid  rgb(160, 71, 243);
+}
+
+.total {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid  rgb(160, 71, 243);
+}
+
+.furnitures-panier {
+    width: 100%;
+    height: 500px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid black;
+}
