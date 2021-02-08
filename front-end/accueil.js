@@ -6,7 +6,11 @@ fetch("http://localhost:3000/api/furniture")
         console.log(furnitures)
         let container = document.getElementById('furnitureContainer');
         furnitures.forEach(furniture => {
-            let article = `<article class="vitrine"><h2>${furniture.name}</h2><img class="imgShop" src="${furniture.imageUrl}" alt="${furniture.name}" ></article>`
+            let article = `<a href="produit.html?id=${furniture._id}"><article class="vitrine"><h2>${furniture.name}</h2><img class="imgShop" src="${furniture.imageUrl}" alt="${furniture.name}" ></article></a>`
             container.innerHTML += article;
         })
     });
+
+    
+// creation d'un bouton qui enmene a la page produit
+

@@ -1,5 +1,5 @@
 
-/*
+
 fetch("http://localhost:3000/api/furniture")
     .then(response => response.json())
     .then(furnitures => {
@@ -10,21 +10,11 @@ fetch("http://localhost:3000/api/furniture")
             container.innerHTML += article;
         })
     });
-*/
-function displayCart {
+
+
+function displayCart (){
     let cartItems = localStorage.getItem('cartNumbers');
     cartItems = JSON.parse(cartItems);
     console.log(cartItems);
-}
+};
 
-
-/*
-// boucle pour le vernis 
-
-for (var i = 0; i < choix.length; i++);
-var option = document.createElement('option');
-option.textContent = choix[i];
-option.id = "vernis";
-vernis.appendChild(option);
-
-*/

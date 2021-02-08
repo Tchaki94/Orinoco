@@ -62,7 +62,7 @@ h1 {
 
 
 .container{
-    height: 2600px;
+    height: 2800px;
     font-family: 'Coming Soon', cursive;
     color: rgb(238, 238, 240);
     font-size: 1.5em;
@@ -75,6 +75,11 @@ h1 {
     margin-top: 30px;
 
 }
+
+.container-produit {
+    height: 800px;
+}
+
 label {
     font-family: 'Caveat Brush', cursive;
     color: black;
@@ -246,4 +251,15 @@ h3 {
     margin-top: 50px;
     margin-bottom: 50px;
     border: 1px solid black;
+}
+
+#monselect {
+    height: 25px;
+}
+
+.choixvernis {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 20px;
 }

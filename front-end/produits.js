@@ -1,76 +1,49 @@
 // obtention du produit dans l'url
 
-fetch("http://localhost:3000/api/furniture")
+const queryString = window.location.search;
+const urlParams = new URLSearchParams (queryString);
+
+//console.log(id);
+
+fetch("http://localhost:3000/api/furniture/" + urlParams.get("id"))
     .then(response => response.json())
     .then(furnitures => {
+       if(furnitures._id === undefined){ throw new Error("L'article n'existe pas ")};
         console.log(furnitures)
-        let container = document.getElementById('furnitureContainer');
-        furnitures.forEach(furniture => {
-        let article = `<article class="furnitureContainer"><div class="difElt"><div class="eltname"><h2>${furniture.name}</h2></div><div class="eltimg"><img class="imgShop" src="${furniture.imageUrl}" alt="${furniture.name}" ></div><div class="eltdesc"><p>${furniture.description}</p></div><div class="eltprice"><p>${furniture.price + " €"}</p></div><div class="addtocart"><a class="add-cart" href="#"><i class="fas fa-shopping-cart fa-1x"></i></a></div></div></article>`
-            container.innerHTML += article;
-        let carts = document.querySelectorAll('.add-cart');
-
-        for (let i=0; i < carts.length; i++) {
-            carts[i].addEventListener('click', () => {
-                cartNumbers();
-        })
-        }
+        displayContainer(furnitures);
+        displaySelect(furnitures);
+    }).catch(error => {
+      console.log(error);
+      let container = document.getElementById('furnitureContainer');
+      container.innerHTML = `<h1>Une erreur est survenue: ${error.message}</h1>`
     })
-});
 
-/* let carts = document.querySelectorAll('.add-cart');
-
-for (let i=0; i < carts.length; i++) {
-    carts[i].addEventListener('click', () => {
-        cartNumbers();
-    })
-}
-*/
-
-/* fonction pour objet dans boutonpanier*/
-
-function onLoadCartNumbers() {
-    console.log( 'le produit cliqué est', furniture);
-    let productNumbers = localStorage.getItem('cartNumbers');
-
-    if(productNumbers){
-        document.querySelector('.panierdirect span').textContent = productNumbers;
-    }
+function displayContainer(furnitures){
+  let container = document.getElementById('furnitureContainer');
+  let article = `<article class="furnitureContainer"><div class="difElt"><div class="eltname"><h2>${furnitures.name}</h2></div>
+  <div class="eltimg"><img class="imgShop" src="${furnitures.imageUrl}" alt="${furnitures.name}" ></div>
+  <div class="eltdesc"><p>${furnitures.description}</p></div>
+  <div class="choixvernis"></div>
+  <div class="eltprice"><p>${furnitures.price + " €"}</p></div>
+  <div class="addtocart"><a class="add-cart" onclick="addItemToCart"><i class="fas fa-shopping-cart fa-1x"></i></a></div></div></article>`
+  container.innerHTML += article;
 }
 
-function cartNumbers() {
-    let productNumbers = localStorage.getItem('cartNumbers');
-    
-    productNumbers = parseInt(productNumbers);
-
-    if(productNumbers) {
-        localStorage.setItem('cartNumbers', productNumbers +1);
-        document.querySelector('.panierdirect span').textContent = productNumbers +1;
-    } else {
-        localStorage.setItem('cartNumbers', 1);
-        document.querySelector('.panierdirect span').textContent = 1;
-    }
-    
+function displaySelect(furnitures){
+  var label = document.createElement('label');
+  label.textContent = "Vernis : ";
+  var type = document.createElement('select');
+  type.id = 'type';
+  
+  for(var i = 0; i < furnitures.varnish.length; i++) {
+  
+    var option = document.createElement('option');
+    option.textContent = furnitures.varnish[i];
+    option.value =furnitures.varnish[i];
+    type.appendChild(option);
+  }
+  label.appendChild(type);
+  document.querySelector('.choixvernis').appendChild(label);
 }
+// rajouter le choix du vernis 
 
-onLoadCartNumbers();
-
-// choix du vernis
-
-/*
-var label = document.createElement('label');
-label.textContent = "Vernis :";
-var vernis = document.createElement('select');
-vernis.id = "choix";
-var choix = furniture.varnish;
-choix.id = "vernis";
-
-// boucle pour le vernis 
-
-for (var i = 0; i < choix.length; i++);
-var option = document.createElement('option');
-option.textContent = choix[i];
-option.id = "vernis";
-vernis.appendChild(option);
-
-*/
