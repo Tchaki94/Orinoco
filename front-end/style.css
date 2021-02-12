@@ -205,9 +205,11 @@ h3 {
 }
 
 .produits-header {
-    width: 100%;
+    width: 90%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
 }
 
 .produit-titre {
@@ -250,7 +252,13 @@ h3 {
     height: 500px;
     margin-top: 50px;
     margin-bottom: 50px;
-    border: 1px solid black;
+    border: 1px solid rgb(160, 71, 243);
+}
+
+#furnitureContainer {
+    height: 550px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #monselect {
