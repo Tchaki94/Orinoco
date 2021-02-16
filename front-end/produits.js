@@ -7,7 +7,9 @@ const urlParams = new URLSearchParams (queryString);
 fetch("http://localhost:3000/api/furniture/" + urlParams.get("id"))
     .then(response => response.json())
     .then(furnitures => {
-       if(furnitures._id === undefined){ throw new Error("L'article n'existe pas ")};
+        if(furnitures._id === undefined){
+          throw new Error("L'article n'existe pas ")
+        };
         afficherContenair(furnitures);
         afficherSelection(furnitures);
     }).catch(error => {
@@ -28,14 +30,14 @@ function afficherContenair(furnitures){
   <div class="eltdesc"><p>${furnitures.description}</p></div>
   <div class="choixvernis"></div>
   <div class="eltprice"><p>${furnitures.price + " €"}</p></div>
-  <div class="addtocart"><a class="add-cart"><i class="fas fa-shopping-cart fa-1x"></i></a></div></div></article>`
+  <div class="ajouterpanier"><a class="add-cart"><i class="fas fa-shopping-cart fa-1x"></i></a></div></div></article>`
   container.innerHTML += article;
 
-  let btn = document.querySelector('.addtocart');
+  let btn = document.querySelector('.ajouterpanier');
   btn.addEventListener('click', () => {
   alert('Vous avez ajouté ' + furnitures.name + ' à votre panier.')
-  ajoutLocalStorage();
-  prixTotal();
+  ajoutLocalStorage(furnitures);
+  //prixTotal();
 })
 };
 
@@ -60,26 +62,20 @@ function afficherSelection(furnitures){
 
 // function pour ajouter au localstorage
 
-function ajoutLocalStorage(){
+function ajoutLocalStorage(furnitures){
   
-  let panier = localStorage.getItem('panier');
-  panier = JSON.parse(panier);
-  furnitures = 0;
-
-  if (panier != null){
-
-      if(panier[furnitures.name] === undefined){
-        panier = {... panier, [furnitures.name] : furnitures}
-      } else {
-        panier = {[furnitures.name] : furnitures}
-      }
-      localStorage.setItem('panier', JSON.stringify(panier));
+  let panier = [];
+  if(localStorage.getItem('panier')){
+    panier = JSON.parse(localStorage.getItem('panier'));
   }
+  panier.push({'panier' : furnitures});
+  localStorage.setItem('panier', JSON.stringify(panier));
+ 
 };
 
 // function total si plusieur produit selectionné
 
-function prixTotal() {
+/*function prixTotal() {
 
   let prix = parseInt(furnitures.price);
   let prixPanier = json.parse(localStorage.getItem('prixTotal'));
@@ -90,5 +86,5 @@ function prixTotal() {
     localStorage.setItem("prixTotal", price);
   }
 }
-
+*/
 

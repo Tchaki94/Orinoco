@@ -3,7 +3,6 @@ body {
     padding:0;
     font-family: 'Caveat Brush', cursive;
     font-size: 20px;
-
 }
 
 nav {
@@ -12,6 +11,7 @@ nav {
     background-color: #FFF;
     display: flex;
 }
+
 ul {
     width: 100%;
     height: 80px;
@@ -20,9 +20,11 @@ ul {
     align-items: center;
     margin-top: -5px;
 }
+
 li {
     list-style: none;
 }
+
 a {
     font-family: 'Caveat Brush', cursive;
     color: #261624;
@@ -31,9 +33,11 @@ a {
     border-radius: 25px;
     padding: 5px 5px;
 }
+
 li a:hover {
     border: 2px solid rgb(160, 71, 243);
 }
+
 .banner {
     width: 100%;
     height: 500px;
@@ -60,7 +64,6 @@ h1 {
     margin-top: 250px; 
 }
 
-
 .container{
     height: 2800px;
     font-family: 'Coming Soon', cursive;
@@ -84,23 +87,28 @@ label {
     font-family: 'Caveat Brush', cursive;
     color: black;
 }
+
 .form-group{
     width: 20%;
     margin:auto;
 }
+
 #produit{
     margin: auto;
     width: 50%;
 }
+
 article h3, p{
     font-size: 1em;
     font-weight: bold;
     color: rgb(5, 5, 5);
     margin: 5%;
 }
+
 #price::after{
-content: " €";
+    content: " €";
 }
+
 #articlePanier, #articleListe{
     border-style: solid;
     border-radius: 3px;
@@ -169,7 +177,7 @@ h2, p {
     color: rgb(160, 71, 243);
 }
 
-.addtocart {
+.ajouterpanier {
     width: 10%;
     display: flex;
     align-items: center;
@@ -187,6 +195,28 @@ i:hover {
 
 a {
     background-color: white;
+}
+
+.navbas {
+    margin-top: -100px;
+}
+
+.navbas>li {
+    background-color: blue;
+}
+
+.backindex {
+    background-color:#f3e9f1;
+    border: 1px solid rgb(160, 71, 243);
+}
+
+.nextpanier {
+    background-color:#f3e9f1;
+    border: 1px solid rgb(160, 71, 243);
+}
+
+.backindex>i {
+    transform: rotate(180deg);
 }
 
 /* fin produit*/
@@ -270,4 +300,11 @@ h3 {
     align-items: center;
     padding-left: 10px;
     padding-right: 20px;
+}
+
+/* responsive */
+
+@media screen and (max-width: 768px) {
+
+    
 }
