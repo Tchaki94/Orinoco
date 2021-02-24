@@ -37,7 +37,6 @@ function afficherContenair(furnitures){
   btn.addEventListener('click', () => {
   alert('Vous avez ajouté ' + furnitures.name + ' à votre panier.')
   ajoutLocalStorage(furnitures);
-  //prixTotal();
 })
 };
 
@@ -63,28 +62,33 @@ function afficherSelection(furnitures){
 // function pour ajouter au localstorage
 
 function ajoutLocalStorage(furnitures){
-  
+  let item = {};
+  item.id = furnitures._id;
+  item.varnish = document.getElementById('type').value;
+  item.quantity = 1 ;
+  item.price = furnitures.price;
   let panier = [];
   if(localStorage.getItem('panier')){
     panier = JSON.parse(localStorage.getItem('panier'));
   }
-  panier.push({'panier' : furnitures});
+  panier = addToCart(panier, item);
+
   localStorage.setItem('panier', JSON.stringify(panier));
  
 };
 
-// function total si plusieur produit selectionné
-
-/*function prixTotal() {
-
-  let prix = parseInt(furnitures.price);
-  let prixPanier = json.parse(localStorage.getItem('prixTotal'));
-
-  if(prixDuPanier != null){
-    localStorage.setItem("prixTotal", prixDuPanier + price);
-  } else {
-    localStorage.setItem("prixTotal", price);
+function addToCart(panier, item){
+  let newPanier = [...panier]
+  let article = newPanier.find(elt => elt.id === item.id && elt.varnish === item.varnish);
+  if(article !== undefined){
+    article.quantity +=1
+  }else{
+    newPanier.push(item);
   }
-}
-*/
+  return newPanier;
+};
+
+
+
+
 

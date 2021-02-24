@@ -235,22 +235,21 @@ h3 {
 }
 
 .produits-header {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 100px;
 }
 
 .produit-titre {
-    width: 30%;
+    width: 20%;
     display: flex;
     align-items: center;
     border-bottom: 3px solid  rgb(160, 71, 243);
 }
 
 .prix {
-    width: 15%;
+    width: 20%;
     display: flex;
     align-items: center;
     border-bottom: 3px solid  rgb(160, 71, 243);
@@ -264,18 +263,12 @@ h3 {
 }
 
 .quantité {
-    width: 15%;
-    display: flex;
-    align-items: center;
-    border-bottom: 3px solid  rgb(160, 71, 243);
-}
-
-.total {
     width: 20%;
     display: flex;
     align-items: center;
     border-bottom: 3px solid  rgb(160, 71, 243);
 }
+
 
 .furnitures-panier {
     width: 100%;
@@ -302,9 +295,105 @@ h3 {
     padding-right: 20px;
 }
 
+.difEltPanier {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+.eltnamePanier, .eltpricePanier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eltnamePanier {
+    width: 25%;
+
+}
+
+.eltpricePanier {
+    width: 25%;
+
+}
+
+.choixvernisPanier{
+    width: 25%;
+}
+
+.eltqtéPanier{
+    width: 25%;
+}
+
+.eltpricePanier>p {
+    color: rgb(160, 71, 243);
+}
+
+.totalpanier {
+    align-items: flex-end;
+}
+
+.totalpanier p {
+    width: 20%;
+    font-size: 22px;
+}
+
+/* fin panier  */ 
 /* responsive */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 450px) {
 
+    .banner {
+        background: none;
+        display: none;
+    }
     
+    .imgbanner {
+        display: none;
+    }
+    
+    .imgShop {
+        width: 80%;
+    }
+
+    .container {
+        width: 90%;
+        margin-left: 30px;
+    }
+
+    .container-produit {
+        width: 90%;
+        margin-left: 30px;
+    }
+
+    .difElt {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbas {
+        margin-top: 20px;
+    }
+
+    .produits-header {
+        display: none;
+    }
+
+    .difEltPanier {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .totalpanier {
+        margin-top: 40px;
+    }
+
+    .form-group {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+
 }
