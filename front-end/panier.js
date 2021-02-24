@@ -27,7 +27,7 @@ function chargementParnier (furnitures) {
       <div class="eltqtéPanier"><p>${article.quantity}</p></div>
       </div></article>`
     })
-    contenair.innerHTML += `<article class="totalpanier"><div><p>Total =${prixTotal}€</p></div>`
+    contenair.innerHTML += `<article class="totalpanier"><div><p>Total = ${prixTotal} €</p></div>`
 };
 
 
