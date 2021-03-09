@@ -32,59 +32,78 @@ function chargementParnier (furnitures) {
 
 
 
-// Event sur btn valider panier
-/*
-let prenom = document.getElementById('prenom').value;
-let nom = document.getElementById('nom').value;
-let email = document.getElementById('email').value;
-let addresse = document.getElementById('addresse').value;
-let ville = document.getElementById('ville').value;
-*/
-
 let btnValide = document.querySelector('button');
 
-btnValide.addEventListener('click', () => {
-
+btnValide.addEventListener('click', (event) => {
+  event.preventDefault();
   var prenom = document.getElementById('prenom');
-  var aucunPrenom = document.getElementById('aucunPrenom');
   var prenomOk = /^[a-zA-Z ,.'-]+$/;
 
   var nom = document.getElementById('nom');
-  var aucunNom = document.getElementById('aucunNom');
   var nomOk = /^[a-zA-Z ,.'-]+$/;
 
   var email = document.getElementById('email');
-  var aucunEmail = document.getElementById('aucunEmail');
   var emailOk = /^[a-z0-9._-]+@[a-z0-9.-]{2,}[.][a-z]{2,3}$/;
 
   var adresse = document.getElementById('adresse');
-  var aucuneAdresse = document.getElementById('aucuneAdresse');
   var adresseOk = /[0-9a-zA-Z]{1,3}[a-z ,.'-]+$/;
 
   var ville = document.getElementById('ville');
-  var aucuneVille = document.getElementById('aucuneVille');
   var villeOk = /^^[a-zA-Z ,.'-]+$/;
 
   // condition pour formulaire
-
-  if (prenomOk.test(prenom.value) == false){
+  isFormOk = true;
+  if (!prenomOk.test(prenom.value)){
     alert("Format de votre prénom incorrect");
-    return event.preventDefault();
-  } else if (nomOk.test(nom.value) == false){
+    isFormOk = false;
+  }
+  if (!nomOk.test(nom.value)){
     alert("Format de votre nom incorrect");
-    return event.preventDefault();
-  } else if (emailOk.test(email.value) == false){
+    isFormOk = false;
+  }
+  if (!emailOk.test(email.value)){
     alert("Format de votre email incorrect");
-    return event.preventDefault();
-  } else if (adresseOk.test(adresse.value) == false){
+    isFormOk = false;
+  }
+  if (!adresseOk.test(adresse.value)){
     alert("Format de votre adresse incorrect");
-    return event.preventDefault();
-  } else if (villeOk.test(adresse.value) == false){
+    isFormOk = false;
+  }
+  if (!villeOk.test(ville.value)){
     alert("Format de votre ville incorrect");
-    return event.preventDefault();
-  } else if (panier == null || total == 0){
-    return event.preventDefault();
+    isFormOk = false;
   }
   alert('Merci pour votre commande !!')
-  window.location.href = "commande.html";
+  if(isFormOk){
+    let articles = JSON.parse(localStorage.getItem('panier'));
+    let data = {};
+    data.contact = {
+      firstName: prenom.value,
+      lastName: nom.value,
+      address: adresse.value,
+      city: ville.value,
+      email: email.value,
+
+    }
+    data.products = articles.map(product => product.id)
+    console.log(data);
+    fetch("http://localhost:3000/api/furniture/order", {
+      method: "POST",
+      headers: {"Content-type": "application/json; charset=UTF-8"},
+      body: JSON.stringify(data),
+    }).then(response => { 
+      return response.json()
+    }).then( response => {
+      //console.log(response);
+      window.location = "commande.html";
+    })
+    ajoutCommande(data);
+  }
+  
 })
+
+function ajoutCommande (data) {
+  dataCommande = JSON.stringify({data});
+  localStorage.setItem('commande', JSON.stringify(data));
+  //console.log(dataCommande)
+}

@@ -347,7 +347,35 @@ h3 {
 
 }
 
-/* fin panier  */ 
+/* fin panier  */
+/* commande */
+
+.container-commande {
+    min-height: auto;
+}
+
+#recap {
+    border: 1px solid rgb(160, 71, 243);
+    height: 100px;
+}
+
+.btnrefresh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#refresh {
+    font-family: 'Caveat Brush', cursive;
+    color: #261624;
+    text-decoration: none;
+    background-color: #f3e9f1;
+    border-radius: 25px;
+    padding: 5px 5px;
+    font-size: 18px;
+}
+
+/* fin de commande */
 /* responsive */
 
 @media screen and (max-width: 450px) {

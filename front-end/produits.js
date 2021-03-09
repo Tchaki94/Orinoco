@@ -88,7 +88,3 @@ function addToCart(panier, item){
   return newPanier;
 };
 
-
-
-
-
