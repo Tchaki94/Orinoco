@@ -97,9 +97,10 @@ btnValide.addEventListener('click', (event) => {
       return response.json()
     }).then( response => {
       //console.log(response);
+      ajoutCommande(response);
       window.location = "commande.html";
     })
-    ajoutCommande(data);
+    
   }
   
 })
@@ -108,7 +109,5 @@ btnValide.addEventListener('click', (event) => {
 // ajout ds local storage de la commande
 
 function ajoutCommande (data) {
-  dataCommande = JSON.stringify({data});
   localStorage.setItem('commande', JSON.stringify(data));
-  console.log(dataCommande)
 }

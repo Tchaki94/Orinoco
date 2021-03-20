@@ -23,7 +23,7 @@ function chargementCommande (furnitures) {
 
     container.innerHTML += `<article class="article-commande">
     <div class="difEltCommande">
-    <h2> Merci pour votre commande ${contacts.contact.firstName} ${contacts.contact.lastName},</br> votre commande N°${contacts.products} de ${displayPrice(articles.price)} €</br> sera livrée au ${contacts.contact.address} à ${contacts.contact.city}.</h2>
+    <h2> Merci pour votre commande ${contacts.contact.firstName} ${contacts.contact.lastName},</br> votre commande N°${contacts.orderId} de ${displayPrice(prixTotal(furnitures))} €</br> sera livrée au ${contacts.contact.address} à ${contacts.contact.city}.</h2>
     <h2>Un email de conformation sera envoyé à ${contacts.contact.email}.</h2>
     </div></article>`
 }
@@ -34,3 +34,14 @@ btnRefresh.addEventListener('click', () => {
     window.location = "index.html";
 })
 
+function prixTotal (furnitures){
+
+    let articles = JSON.parse(localStorage.getItem('panier'));
+    let prixTotal = 0
+    articles.forEach(article => {
+        let product = furnitures.find(elt => elt._id === article.id);
+        console.log(product);
+        prixTotal +=  article.quantity * product.price;
+    });
+    return prixTotal;
+}
