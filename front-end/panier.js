@@ -1,3 +1,5 @@
+import { displayPrice } from './functions.js';
+
 // recuperation du produit
 
 fetch("http://localhost:3000/api/furniture")
@@ -7,7 +9,7 @@ fetch("http://localhost:3000/api/furniture")
     chargementParnier(furnitures);
     }).catch(error => {
       let container = document.querySelector('.furnitures-panier');
-      container.innerHTML = `<h1>Une erreur est survenue: ${error.message}</h1>`
+      container.innerHTML += `<h1>Une erreur est survenue: ${error.message}</h1>`
  });
 
 // chargement du panier
@@ -22,15 +24,15 @@ function chargementParnier (furnitures) {
       contenair.innerHTML += `<article class="article-panier">
       <div class="difEltPanier">
       <div class="eltnamePanier"><h2>Ref : ${article.id}</h2></div>
-      <div class="eltpricePanier"><p>${article.price + " €"}</p></div>
+      <div class="eltpricePanier"><p>${displayPrice(article.price) + " €"}</p></div>
       <div class="choixvernisPanier"><p>${article.varnish}</p></div>
       <div class="eltqtéPanier"><p>${article.quantity}</p></div>
       </div></article>`
     })
-    contenair.innerHTML += `<article class="totalpanier"><div><p>Total = ${prixTotal} €</p></div>`
+    contenair.innerHTML += `<article class="totalpanier"><div><p>Total = ${displayPrice(prixTotal)} €</p></div>`
 };
 
-
+// ajout d'un event au btn pour renvoyé a la page commande
 
 let btnValide = document.querySelector('button');
 
@@ -52,7 +54,7 @@ btnValide.addEventListener('click', (event) => {
   var villeOk = /^^[a-zA-Z ,.'-]+$/;
 
   // condition pour formulaire
-  isFormOk = true;
+  let isFormOk = true;
   if (!prenomOk.test(prenom.value)){
     alert("Format de votre prénom incorrect");
     isFormOk = false;
@@ -102,8 +104,11 @@ btnValide.addEventListener('click', (event) => {
   
 })
 
+
+// ajout ds local storage de la commande
+
 function ajoutCommande (data) {
   dataCommande = JSON.stringify({data});
   localStorage.setItem('commande', JSON.stringify(data));
-  //console.log(dataCommande)
+  console.log(dataCommande)
 }

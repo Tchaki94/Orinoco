@@ -1,3 +1,5 @@
+import { displayPrice } from './functions.js';
+
 // obtention du produit dans l'url
 
 const queryString = window.location.search;
@@ -29,7 +31,7 @@ function afficherContenair(furnitures){
   <div class="eltimg"><img class="imgShop" src="${furnitures.imageUrl}" alt="${furnitures.name}" ></div>
   <div class="eltdesc"><p>${furnitures.description}</p></div>
   <div class="choixvernis"></div>
-  <div class="eltprice"><p>${furnitures.price + " €"}</p></div>
+  <div class="eltprice"><p>${displayPrice(furnitures.price) + " €"}</p></div>
   <div class="ajouterpanier"><a class="add-cart"><i class="fas fa-shopping-cart fa-1x"></i></a></div></div></article>`
   container.innerHTML += article;
 
