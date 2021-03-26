@@ -12,5 +12,5 @@ fetch("http://localhost:3000/api/furniture")
     });
 
     
-// creation d'un bouton qui enmene a la page produit
+
 
