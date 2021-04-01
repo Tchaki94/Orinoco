@@ -24,7 +24,7 @@ function chargementCommande (furnitures) {
     container.innerHTML += `<article class="article-commande">
     <div class="difEltCommande">
     <h2> Merci pour votre commande ${contacts.contact.firstName} ${contacts.contact.lastName},</br> votre commande N°${contacts.orderId} de ${displayPrice(prixTotal(furnitures))} €</br> sera livrée au ${contacts.contact.address} à ${contacts.contact.city}.</h2>
-    <h2>Un email de conformation sera envoyé à ${contacts.contact.email}.</h2>
+    <h2>Un email de confirmation sera envoyé à ${contacts.contact.email}.</h2>
     </div></article>`
 }
 

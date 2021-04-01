@@ -75,7 +75,6 @@ btnValide.addEventListener('click', (event) => {
     alert("Format de votre ville incorrect");
     isFormOk = false;
   }
-  alert('Merci pour votre commande !!')
   if(isFormOk){
     let articles = JSON.parse(localStorage.getItem('panier'));
     let data = {};
@@ -96,6 +95,7 @@ btnValide.addEventListener('click', (event) => {
     }).then(response => { 
       return response.json()
     }).then( response => {
+      alert('Merci pour votre commande !!')
       //console.log(response);
       ajoutCommande(response);
       window.location = "commande.html";
