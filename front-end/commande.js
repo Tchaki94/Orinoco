@@ -30,7 +30,8 @@ function chargementCommande (furnitures) {
 
 let btnRefresh = document.querySelector('#refresh');
 btnRefresh.addEventListener('click', () => {
-    localStorage.clear();
+    localStorage.removeItem("panier");
+    localStorage.removeItem("commande");
     window.location = "index.html";
 })
 

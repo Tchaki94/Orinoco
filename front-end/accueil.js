@@ -8,6 +8,10 @@ fetch("http://localhost:3000/api/furniture")
             let article = `<a href="produit.html?id=${furniture._id}"><article class="vitrine"><h2>${furniture.name}</h2>
             <img class="imgShop" src="${furniture.imageUrl}" alt="${furniture.name}" ></article></a>`
             container.innerHTML += article;
+        }).catch(error => {
+            let container = document.getElementById('furnitureContainer');
+            let article = `<h1> Une erreur est survenue !</h1>`
+            container.innerHTML += article;
         })
     });
 
